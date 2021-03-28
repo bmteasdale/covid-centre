@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  app:
+    image: payara/server-full
+    container_name: payaraweb
+    hostname: payaraweb
+    ports:
+      - 8080:8080
+    volumes:
+      - ./target/covidCases-1.0-SNAPSHOT.war:/opt/payara/deployments/covidCases-1.0-SNAPSHOT.war
