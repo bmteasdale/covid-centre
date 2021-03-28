@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <h:head>
+        <title>Assign3 - COVID-19 Centre</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com"/>
+        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"/>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    </h:head>
+    <h:body style="font-family: Roboto, sans-serif;">
+        
+        <!-- Navigation Bar -->
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">COVID-19 Centre</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="/covidCases">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#prevention-tips">Preventions</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#visualizations">Data</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#img-gallery">Photos</a>
+                    </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        
+        <!-- Sidebar -->
+        <p:sidebar style="height:350px;" widgetVar="bottomSidebar" position="bottom" baseZIndex="10000">
+            <h3>To stay updated about COVID-19 news, follow the appropriate link below.</h3>
+            <p>Global:</p>
+            <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019">World Health Organization (WHO)</a>
+            <br /><br /><p>United States:</p>
+            <a href="https://www.cdc.gov/coronavirus/2019-ncov/index.html">Centers for Disease Control and Prevention (CDC)</a>
+            <br /><br /><p>Canada:</p>
+            <a href="https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection.html">Government of Canada (GoC)</a>
+        </p:sidebar>
+        
+        <!-- Covid Banner -->
+        <img src="images/covid-banner.png" alt="covid-banner" style="width: 100%;"/>
+        <div id="prevention-tips" style="font-family: Roboto, sans-serif; margin: 50px">
+            <h2 style="font-family: 'Permanent Marker', cursive;">Prevention Tips</h2><br />
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card" style="padding: 0 8px;">
+                        <br />
+                        <img src="images/hands-wash-solid.svg" alt="svg" style="width: 50px;"/><br />
+                        <h4>Clean Hands Often.</h4>
+                        <p>Keeping hands clean is one of the most important steps we can take to avoid getting sick and spreading germs to others. Many diseases and conditions are spread by not washing hands with soap and clean, running water.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card" style="padding: 0 8px;">
+                        <br />
+                        <img src="images/people-arrows-solid.svg" alt="svg" style="width: 50px;"/><br />
+                        <h4>Avoid Close Contact.</h4>
+                        <p>Since people can spread the virus before they know they are sick, it is important to stay at least 6 feet away from others when possible, even if you—or they—do not have any symptoms. Social distancing is especially important for people who are at higher risk for severe illness from COVID-19.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card" style="padding: 0 8px;">
+                        <br />
+                        <img src="images/head-side-mask-solid.svg" alt="svg" style="width: 50px;"/><br />
+                        <h4>Wear a Face Mask.</h4>
+                        <p>Masks are a simple barrier to help prevent your respiratory droplets from reaching others. Studies show that masks reduce the spray of droplets when worn over the nose and mouth.</p>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div id="visualizations" style="font-family: Roboto, sans-serif; margin: 50px">
+            <h2 style="font-family: 'Permanent Marker', cursive;">COVID-19 Data Visualizations</h2><br />
+            <small>Click on a title in each legend to toggle that specific category.</small>
+            <p:fieldset legend="Global" toggleable="true" toggleSpeed="500">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Cases, Deaths, and Recoveries <sup><small>*</small></sup></h3><br />
+                        <p:donutChart model="#{chartBean.donutModel}" style="width: 100%; height: 300px;"/>
+                    </div>
+                    <div class="col-lg-6">
+                        <p:panel header="Vaccinations" footer="* all data gathered as of March 26th, 2021">
+                              <img src="images/globe.svg" alt="usa" style="width: 30px;"/>
+                            <p><span><strong>Doses Given:</strong></span> 541 Million</p>
+                            <p><span><strong>Fully Vaccinated:</strong></span> 120 Million</p>
+                            <p><span><strong>% of pop. fully vaccinated:</strong></span> 1.54%</p>
+                            <img src="images/usa.svg" alt="usa" style="width: 30px;"/>
+                            <p><span><strong>Doses Given:</strong></span> 140 Million</p>
+                            <p><span><strong>Fully Vaccinated:</strong></span> 50.1 Million</p>
+                            <p><span><strong>% of pop. fully vaccinated:</strong></span> 15.28%</p>
+                            <img src="images/canada.svg" alt="canada" style="width: 30px;"/>
+                            <p><span><strong>Doses Given:</strong></span> 4.97 Million</p>
+                            <p><span><strong>Fully Vaccinated:</strong></span> 663,000</p>
+                            <p><span><strong>% of pop. fully vaccinated:</strong></span> 1.76%</p>
+                        </p:panel>
+                    </div>
+                </div>
+            </p:fieldset>
+        </div>
+        <div id="img-gallery" style="font-family: Roboto, sans-serif; margin: 50px">
+            <h2 style="font-family: 'Permanent Marker', cursive;">COVID-19 Related Photos</h2><br />
+            
+            <p:carousel numVisible="1" effect="easeInStrong" style="margin-bottom:0">
+                <p:tab title="Header I">
+                    <img src="images/vaccine.jpeg" alt="vacccine" style="width:100%;"/>
+                </p:tab>
+                <p:tab title="Header II">
+                    <img src="images/masks.jpeg" alt="masks"  style="width:100%"/>
+                </p:tab>
+                <p:tab title="Header III">
+                    <img src="images/virus.jpeg" alt="virsus"  style="width:100%"/>
+                </p:tab>
+                <p:tab title="Header IV">
+                    <img src="images/people-masks.jpeg" alt="people"  style="width:100%"/>
+                </p:tab>
+                <p:tab title="Header V">
+                    <img src="images/sanitizer.jpeg" alt="sanitizer"  style="width:100%"/>
+                </p:tab>
+            </p:carousel>
+        </div>
+        <div id="learn-more" style="text-align: center; height:100px;">
+            <h:commandButton value="Learn More" type="button" onclick="PF('bottomSidebar').show()" class="btn btn-danger" />
+        </div>
+    </h:body>
+</html>
+
